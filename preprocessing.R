@@ -41,9 +41,9 @@ normalized_data =  function (raw_Data, min_Reads = 5, min_Cell = 0.1, min_Gene =
 
 
 
-Raw_data<- readRDS("muraro.rds")
+Raw_data<- readRDS("yan.rds")
 data <- assay(Raw_data) #cells in columns, genes in rows; 
 Normalized_Biase_data = normalized_data(data)
 
-write.table((Normalized_Biase_data),file="data_process.csv",sep=",",row.names = FALSE,col.names = FALSE)
+write.table((Normalized_Biase_data),file="data_process.csv",sep=",")
 
