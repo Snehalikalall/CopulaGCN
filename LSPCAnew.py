@@ -47,7 +47,7 @@ def knn(q_idx):
 #Number of processesors
 p=8 
 
-X = genfromtxt('data_process.csv',delimiter=",")   
+X = genfromtxt('data_process.csv',delimiter=",")  # Rows are gene and coloumns will be sample   
 print("Read Complete")
 Xnew=X
 # Repeat the LSH Sampling i times
