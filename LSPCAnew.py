@@ -47,7 +47,7 @@ def knn(q_idx):
 #Number of processesors
 p=8 
 
-X = genfromtxt('/home/sneha/data_process.csv',delimiter=",")   
+X = genfromtxt('data_process.csv',delimiter=",")   
 print("Read Complete")
 Xnew=X
 # Repeat the LSH Sampling i times
