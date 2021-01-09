@@ -7,20 +7,19 @@ Run the  **LSPCAnew.py** python script to sampling the genes.  It takes the pre-
 
 The user input for number of iterations(k) in LSH is given **3** as default for example dataset. It can be changed by users depending upon size on datasets. Default is **2** for small datasets, or **3** for large feature dataset.
 
-Samples should be in row and Genes should be in coloumn in pre-processed dataset.
 
 Run  the **main.R** script directly as a sampled feature dataset, which is also given in data folder.
 
-The user input for number of features to be selected using CBFS is given. **100** as default for the example dataset. 
+The user input for number of features to be selected using UCFS is given. **100** as default for the example dataset. 
 
 Output **Feaout** is the informative feature subset.
 
 ## Pre-requisites
 
-> R version  3.6.7
+> R version  4.0.2
 
-> Python 3.6
+> Python 3.7
 
-> Python packages: sklearn, multiprocessing
+> Python packages: sklearn-0.19.2, multiprocessing
 
 > R packages: copula, infotheo, foreach, doParallel
