@@ -1,5 +1,5 @@
 # UCFS
-Download the Raw Example dataset (muraro.rds). Put the datasets and codes in same folder.
+Download the Raw Example dataset (yan.rds). Put the dataset and codes in same folder.
 
 Run the **preprocessing.R** file to preprocess your raw datasets.  There are three user parameters: min_Reads, min_Cell, min_Gene. 
 
