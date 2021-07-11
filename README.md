@@ -1,18 +1,6 @@
 # UCFS
-Download the Raw Example dataset (yan.rds). Put the dataset and codes in same folder.
 
-Run the **preprocessing.R** file to preprocess your raw datasets.  There are three user parameters: min_Reads, min_Cell, min_Gene. 
-
-Run the  **LSPCAnew.py** python script to sampling the genes.  It takes the pre-processed dataset as input and returns the sampled feature dataset as output, **datasemifea.csv** file is the output. 
-
-The user input for number of iterations(k) in LSH is given **3** as default for example dataset. It can be changed by users depending upon size on datasets. Default is **2** for small datasets, or **3** for large feature dataset.
-
-
-Run  the **main.R** script directly as a sampled feature dataset, which is also given in data folder.
-
-The user input for number of features to be selected using UCFS is given. **100** as default for the example dataset. 
-
-Output **Feaout** is the informative feature subset.
+A Copula Based unsupervised Feature Selection- Application on Single cell RNA Sequence Data
 
 ## Pre-requisites
 
@@ -22,4 +10,62 @@ Output **Feaout** is the informative feature subset.
 
 > Python packages: sklearn-0.19.2, multiprocessing
 
-> R packages: copula, infotheo, foreach, doParallel
+> R packages: copula, prodlim, foreach, doParallel
+
+## Install
+library("devtools")
+
+install_github("Snehalikalall/UCFS")
+
+Check the installation:
+
+library(UCFS)
+
+## Load required packages
+
+R packages
+
+     library(SingleCellExperiment)
+     library(foreach)
+     library(doParallel)
+     library(Linnorm)
+
+Python Packages: 
+ 
+    pip install -U scikit-learn==0.19.2
+    pip install multiprocess
+
+
+
+## Usage of the R functions
+
+Preprocess raw data using DataProcessing.R function
+
+    Biase_data<- readRDS("klein.rds")
+    data <- assay(Biase_data) 
+    annotation <- Biase_data[[1]] #already factor type class
+    colnames(data) <- annotation
+    preprocessed_data = normalized_data(data)
+
+
+Use Renyifeature.R to select features using Renyi entropy, Tsallisfeature.R to select features using Tsallis entropy
+
+    # load the preprocess data. Data should be cells in row, genes in coloumn.
+    data=t(as.matrix(read.csv("yan_process.csv",header=FALSE)))
+    cell<-as.matrix(read.csv("yan_celltype.csv",header=FALSE))
+    gene<-as.matrix(read.csv("yan_gene.csv",header=FALSE))
+    n <- nrow(data)
+    col<-ncol(data)
+    count=ncol(data)
+    p=40
+    q=0.3
+    nf=500
+    #nf: Number of feature to be selected, default is 500; P: Number of cores, default is 40;
+    # q-value = 0.3 for tsallis, q-value=0.7 for Renyi
+
+    # Renyi entropy based Feature Selection, the function returns data with selected features
+    Feadata=Renyifeature(data,cell,gene,p,q,nf)
+    
+    # Renyi entropy based Feature Selection, the function returns the data with selected features
+    Feadata=Tsallisfeature(data,cell,gene,p,q,nf)
+
