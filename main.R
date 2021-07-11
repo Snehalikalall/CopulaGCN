@@ -1,30 +1,35 @@
-library('copula')
+UCFSfeature <- function(lspcadata,data,p,nf){
 library(foreach)
 library(doParallel)
-
-data=read.csv("datasemifea.csv", header=FALSE)
-
-
-#Feature Selecture
-cl <- makeCluster(7)   # Number of Cores in Machine
+library('prodlim')
+ 
+ #data=a matrix format, Cells sholud be in rwo, Genes should be in coloumn in data
+ #nf=Number of feature to be selected.
+#p=Number of cores. 
+ 
+data=as.matrix(lspcadata)
+cl <- makeCluster(p)
 registerDoParallel(cl)
-nf=100   # Number of Features to be selected
+nf=nf
 set.seed(1000)
-datas2<-t(data)    # Gene or Feature should be in coloumn
+datas2<-t(data)
 n=nrow(datas2)
 count=ncol(datas2)
 start.time <- Sys.time()
+# Feature by CBFS parallel 
 fea<- matrix(0, nrow=1,ncol =nf)
 fea[1,1]=1
+theta=-0.5
+fc=claytonCopula(theta,dim=2)
 for (m in 2:nf)
 {
   feas<-fea[1,(m-1)]
   parl<-foreach(j=1:count, .combine=c,.packages='copula') %dopar%
-  {
-    u<-pobs(cbind(datas2[,feas],datas2[,j]))
-    fit.tau<-fitCopula(normalCopula(dim=2, dispstr="ex"), u, method="itau")
-    res=(confint(fit.tau)[,2])
-  }
+    {
+      u<-pobs(cbind(datas2[,feas],datas2[,j]))
+      a=pCopula(u,fc)
+      res=mean(a)
+    }
   result<-as.matrix(parl) 
   result[fea]<-1
   feamid=which.min(result)
@@ -36,5 +41,15 @@ end.time <- Sys.time()
 time.taken <- end.time - start.time
 time.taken  
 registerDoSEQ()
-#Selected Feature set
-Feaout=fea
+
+
+#take main data to match feature number with lspca data feature, cells in row, genes in coloumn
+dataorg=as.matrix(t(data))
+datasemfea<-as.data.frame(lspcadata)
+index<-row.match(datasemfea,dataorg)
+feafinal<-as.matrix(index[as.matrix(fea)])
+  
+UCFSdata=data[,feafinal] # Feature reduced Data with Copula based feature selection
+UCFSresult<- list("Feadata" = UCFSdata, "Features" = feafinal)
+return(UCFSresult) 
+}
