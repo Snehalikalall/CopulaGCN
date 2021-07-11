@@ -45,14 +45,19 @@ Preprocess raw data using DataProcessing.R function
     data <- assay(Biase_data) 
     annotation <- Biase_data[[1]] #already factor type class
     colnames(data) <- annotation
-    preprocessed_data = normalized_data(data)
+    data_process = normalized_data(data)
 
+## Usage of the py functions
 
-    Use UCFSfeature.R to select features using copula based unsupervised feature selection
+Use LSPCAnew.py to select a sub-sample of genes, results "lspcadata.csv" in data folder.
 
-    # load the preprocess data. Data should be cells in row, genes in coloumn.
-    data=as.matrix(read.csv("klein.csv",header=FALSE))
-    lspcadata<-as.matrix(read.csv("kleinlspcacsv",header=FALSE))
+## Usage of the R functions
+
+Use UCFSfeature.R to select informative feature subset using copula based unsupervised feature selection
+
+    # load the "lspcadata.csv" and "data_process.csv" in R file.  
+    data=as.matrix(read.csv("data_process.csv",header=FALSE))    #should be cells in row, genes in coloumn.
+    lspcadata<-as.matrix(read.csv("lspcadata.csv",header=FALSE))
     n <- nrow(data)
     col<-ncol(data)
     count=ncol(data)
