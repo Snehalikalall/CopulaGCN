@@ -19,7 +19,7 @@ install_github("Snehalikalall/UCFS")
 
 Check the installation:
 
-library(UCFS)
+library(ucfs)
 
 ## Load required packages
 
