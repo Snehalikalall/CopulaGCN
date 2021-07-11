@@ -66,5 +66,4 @@ print("Size of Original  Data",X.shape)
 
 # Save the sampled data in your folder
 numpy.savetxt("lspcadata.csv",Xnew, delimiter=",")
-#numpy.savetxt("/home/sneha/biasegeneindex.csv",c1, delimiter=",")
 
