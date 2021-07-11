@@ -8,10 +8,10 @@ import scipy.stats
 from sklearn.cluster import KMeans
 from multiprocessing import Pool
 
-# Take the processed data input from machine
+# Take the processed data input from data folder using Dataprocessing.R file
 
 
-itr=3  # Most of dataset, it is 2 or 3
+itr=1  #Number of Iteration in LSH sampling
 
 # Define Input for parallel jobs running in a batch
 def chunk(a, n):
@@ -45,7 +45,7 @@ def knn(q_idx):
 	return indices
 
 #Number of processesors
-p=8 
+p=40
 
 X = genfromtxt('data_process.csv',delimiter=",")  # Rows are gene and coloumns will be sample   
 print("Read Complete")
@@ -65,6 +65,6 @@ print("Size of Original  Data",X.shape)
 
 
 # Save the sampled data in your folder
-numpy.savetxt("datasemifea.csv",Xnew, delimiter=",")
+numpy.savetxt("lspcadata.csv",Xnew, delimiter=",")
 #numpy.savetxt("/home/sneha/biasegeneindex.csv",c1, delimiter=",")
 
