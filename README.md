@@ -59,8 +59,8 @@ The function returns the sampled data "lspcadata.csv"
 Use UCFSfeature.R to select informative feature subset using copula based unsupervised feature selection
 
     # load the "lspcadata.csv" and "data_process.csv" in R file.  
-    data=as.matrix(read.csv("data_process.csv",header=FALSE))    #should be cells in row, genes in coloumn.
-    lspcadata<-as.matrix(read.csv("lspcadata.csv",header=FALSE))
+    data=as.matrix(read.csv("Data/data_process.csv",header=FALSE))    #should be cells in row, genes in coloumn.
+    lspcadata<-as.matrix(read.csv("Data/lspcadata.csv",header=FALSE))
     n <- nrow(data)
     col<-ncol(data)
     count=ncol(data)
