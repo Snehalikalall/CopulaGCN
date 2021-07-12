@@ -50,7 +50,9 @@ Preprocess the raw data using DataProcessing.R function
 
 ## Use LSH smpling
 
-Use LSPCAnew.py to select a sub-sample of genes, results "lspcadata.csv" in data folder.
+Run LSPCAnew.py to select a sub-sample of genes as:  python LSPCAnew.py 
+
+The function returns the sampled data "lspcadata.csv" 
 
 ## Select genes feom sampled data 
 
