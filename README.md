@@ -37,9 +37,9 @@ Python Packages:
 
 
 
-## Usage of the R functions
+## Preprocessing of raw data
 
-Preprocess raw data using DataProcessing.R function
+Preprocess the raw data using DataProcessing.R function
 
     Biase_data<- readRDS("klein.rds")
     data <- assay(Biase_data) 
@@ -48,11 +48,11 @@ Preprocess raw data using DataProcessing.R function
     data_process = normalized_data(data)
     write.table(data_process,file="UCFS/Data/data_process.csv",sep=",",row.names = FALSE,col.names = FALSE)
 
-## Usage of the py functions
+## Use LSH smpling
 
 Use LSPCAnew.py to select a sub-sample of genes, results "lspcadata.csv" in data folder.
 
-## Usage of the R functions
+## Select genes feom sampled data 
 
 Use UCFSfeature.R to select informative feature subset using copula based unsupervised feature selection
 
