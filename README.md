@@ -70,5 +70,9 @@ Use UCFSfeature.R to select informative feature subset using copula based unsupe
 
     # Copula based unsupervised Feature Selection, the function returns two elements: i) Data with selected features, and ii) The selected feature subset
     Result=UCFSfeature(lspcadata,data,p,nf)
+    # Data with selected features
+    Result$Feadata
+    # The selected feature subset
+    Result$Features
     
    
