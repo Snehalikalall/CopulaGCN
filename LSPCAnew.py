@@ -49,7 +49,7 @@ p=40
 
 X = genfromtxt('Data/data_process.csv',delimiter=",")  # Rows are gene and coloumns will be sample   
 print("Read Complete")
-Xnew=X
+Xnew=numpy.transpose(X)
 # Repeat the LSH Sampling i times
 for i in range(0,itr):
 	row=Xnew.shape[0]
