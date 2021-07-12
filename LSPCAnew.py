@@ -16,7 +16,7 @@ itr=1  #Number of Iteration in LSH sampling
 # Define Input for parallel jobs running in a batch
 def chunk(a, n):
     k, m = divmod(len(a), n)
-    return list(tuple(a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)]) for i in xrange(n))
+    return list(tuple(a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)]) for i in range(n))
 
 
 
