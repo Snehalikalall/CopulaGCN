@@ -47,7 +47,7 @@ def knn(q_idx):
 #Number of processesors
 p=40
 
-X = genfromtxt('data_process.csv',delimiter=",")  # Rows are gene and coloumns will be sample   
+X = genfromtxt('Data/data_process.csv',delimiter=",")  # Rows are gene and coloumns will be sample   
 print("Read Complete")
 Xnew=X
 # Repeat the LSH Sampling i times
@@ -65,5 +65,5 @@ print("Size of Original  Data",X.shape)
 
 
 # Save the sampled data in your folder
-numpy.savetxt("lspcadata.csv",Xnew, delimiter=",")
+numpy.savetxt("Data/lspcadata.csv",Xnew, delimiter=",")
 
