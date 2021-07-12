@@ -2,6 +2,7 @@ UCFSfeature <- function(lspcadata,data,p,nf){
 library(foreach)
 library(doParallel)
 library('prodlim')
+ library('Copula')
  
  #data=a matrix format, Cells sholud be in rwo, Genes should be in coloumn in data
  #nf=Number of feature to be selected.
