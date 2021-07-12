@@ -46,6 +46,7 @@ Preprocess raw data using DataProcessing.R function
     annotation <- Biase_data[[1]] #already factor type class
     colnames(data) <- annotation
     data_process = normalized_data(data)
+    write.table(data_process,file="UCFS/Data/data_process.csv",sep=",",row.names = FALSE,col.names = FALSE)
 
 ## Usage of the py functions
 
