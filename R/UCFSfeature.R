@@ -8,12 +8,12 @@ library('prodlim')
  #nf=Number of feature to be selected.
 #p=Number of cores. 
  
-data=as.matrix(lspcadata)
+datals=as.matrix(lspcadata)
 cl <- makeCluster(p)
 registerDoParallel(cl)
 nf=nf
 set.seed(1000)
-datas2<-t(data)
+datas2<-t(datals)
 n=nrow(datas2)
 count=ncol(datas2)
 start.time <- Sys.time()
