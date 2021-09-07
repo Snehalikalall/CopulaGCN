@@ -66,10 +66,12 @@ Use copula_cell_cell_similarmatrix.R to get the cell-cell correlation matrix.
     #P: Number of cores, default is 40
 
     # Copula based cell cell correlation matrix generation, the function returns (cellxcell) matrix
-    Result=copulacellmatrix(lspcadata,p)
+    copulacorrmat=copulacellmatrix(lspcadata,p)
     
 ## Get low dimensional embedding from copula based cell-cell correlation matrix 
     
     Use GCN_on_copulamat.ipynb to get the low dimensional embedding matrix.
+    
+    load the "copulacorrmat.csv" in the above ipynb file (#should be cellxcell) from .
     
    
