@@ -15,11 +15,11 @@ A topology preserving graph convolution network for clustering of single-cell RN
 ## Install
 library("devtools")
 
-install_github("Snehalikalall/GCNCopula")
+install_github("Snehalikalall/CopulaGCN")
 
 Check the installation:
 
-library(gcncopula)
+library(copulagcn)
 
 ## Load required packages
 
