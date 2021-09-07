@@ -1,6 +1,6 @@
-# GCNCopula
+# CopulaGCN
 
-A Copula Based unsupervised Feature Selection- Application on Single cell RNA Sequence Data
+A topology preserving graph convolution network for clustering of single-cell RNA seq data
 
 ## Pre-requisites
 
