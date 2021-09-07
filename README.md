@@ -1,4 +1,4 @@
-# UCFS
+# GCNCopula
 
 A Copula Based unsupervised Feature Selection- Application on Single cell RNA Sequence Data
 
@@ -8,18 +8,18 @@ A Copula Based unsupervised Feature Selection- Application on Single cell RNA Se
 
 > Python 3.7
 
-> Python packages: sklearn-0.19.2, multiprocessing
+> Python packages: sklearn-0.19.2, multiprocessing, tensorflow 2.0
 
-> R packages: copula, prodlim, foreach, doParallel
+> R packages: copula, foreach, doParallel
 
 ## Install
 library("devtools")
 
-install_github("Snehalikalall/UCFS")
+install_github("Snehalikalall/GCNCopula")
 
 Check the installation:
 
-library(ucfs)
+library(gcncopula)
 
 ## Load required packages
 
@@ -29,6 +29,7 @@ R packages
      library(foreach)
      library(doParallel)
      library(Linnorm)
+     library(copula)
 
 Python Packages: 
  
@@ -54,25 +55,21 @@ Run LSPCAnew.py to select a sub-sample of genes as:  python LSPCAnew.py
 
 The function returns the sampled data "lspcadata.csv" 
 
-## Select genes feom sampled data 
+## Get copula based cell-cell correlation matrix from sampled data 
 
-Use UCFSfeature.R to select informative feature subset using copula based unsupervised feature selection
+Use copula_cell_cell_similarmatrix.R to get the cell-cell correlation matrix.
 
-    # load the "lspcadata.csv" and "data_process.csv" in R file.  
-    data=as.matrix(read.csv("Data/data_process.csv",header=FALSE))    #should be cells in row, genes in coloumn.
+    # load the "lspcadata.csv" in R file (#should be genes in row, cells in coloumn).  
     lspcadata<-as.matrix(read.csv("Data/lspcadata.csv",header=FALSE))
-    n <- nrow(data)
-    col<-ncol(data)
-    count=ncol(data)
     p=40
-    nf=500
-    #nf: Number of feature to be selected, default is 500; P: Number of cores, default is 40
+    
+    #P: Number of cores, default is 40
 
-    # Copula based unsupervised Feature Selection, the function returns two elements: i) Data with selected features, and ii) The selected feature subset
-    Result=UCFSfeature(lspcadata,data,p,nf)
-    # Data with selected features
-    Result$Feadata
-    # The selected feature subset
-    Result$Features
+    # Copula based cell cell correlation matrix generation, the function returns (cellxcell) matrix
+    Result=copulacellmatrix(lspcadata,p)
+    
+## Get low dimensional embedding from copula based cell-cell correlation matrix 
+    
+    Use GCN_on_copulamat.ipynb to get the low dimensional embedding matrix.
     
    
