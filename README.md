@@ -19,7 +19,7 @@ install_github("Snehalikalall/CopulaGCN")
 
 Check the installation:
 
-library(copulagcn)
+library(scGCConv)
 
 ## Load required packages
 
